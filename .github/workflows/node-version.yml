@@ -12,4 +12,5 @@ jobs:
           node-version: '16'
       
       - run: node -v
+      - run: npm -v
       
