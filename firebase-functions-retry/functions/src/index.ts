@@ -18,7 +18,7 @@ export const pubsubTask = functions
     functions.logger.info("START: pubsubTask");
 
     const eventAgeMs = Date.now() - Date.parse(context.timestamp);
-    const eventMaxAgeMs = 60 * 1000;
+    const eventMaxAgeMs = 60 * 1000 * 15;
     if (eventAgeMs > eventMaxAgeMs) {
       console.log(`Dropping event ${context} with age[ms]: ${eventAgeMs}`);
       return 0;

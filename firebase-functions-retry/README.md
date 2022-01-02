@@ -27,3 +27,19 @@ export const pubsubTask = functions
 ```
 
 毎秒 1.4 回ペースでリトライされていた(危険！)
+
+## 設定
+
+https://cloud.google.com/sdk/gcloud/reference/pubsub/subscriptions/update
+
+```
+gcloud pubsub subscriptions update \
+ projects/suzulabo-sandbox/subscriptions/gcf-pubsubTask-us-central1-functions-retry \
+ --min-retry-delay=60s \
+ --max-retry-delay=60s \
+ --message-retention-duration=10m
+```
+
+1 分ごとにリトライ、最大 10 分までにできた  
+この設定は GCP Console からも可能  
+(PubSub -> サブスクリプション)
