@@ -28,7 +28,7 @@ export const pubsubTask = functions
 
 毎秒 1.4 回ペースでリトライされていた(危険！)
 
-## 設定
+## PubSub を設定
 
 https://cloud.google.com/sdk/gcloud/reference/pubsub/subscriptions/update
 
@@ -40,6 +40,12 @@ gcloud pubsub subscriptions update \
  --message-retention-duration=10m
 ```
 
-1 分ごとにリトライ、最大 10 分までにできた  
+1 分ごとにリトライ、最大 10 分(10 分が最小)までにできた
+
+retry-delay は 600 秒まで  
+message-retention-duration は最小 10 分
+
 この設定は GCP Console からも可能  
 (PubSub -> サブスクリプション)
+
+再度 Firebase Deploy しても消えることはなかったので一度やれば OK
